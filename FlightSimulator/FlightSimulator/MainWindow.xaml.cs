@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FlightSimulator.Views.Windows;
 
 namespace FlightSimulator
 {
@@ -22,6 +23,12 @@ namespace FlightSimulator
         public MainWindow()
         {
             InitializeComponent();
+            /// <summary>
+            /// Temporary opening settings window from here.
+            /// At later stages it will be opened by a button (which is bound to a command).
+            /// </summary>
+            SettingsWindow sw = new SettingsWindow();
+            sw.Show();
         }
     }
 }
