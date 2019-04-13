@@ -29,6 +29,7 @@ namespace FlightSimulator
             /// </summary>
             SettingsWindow sw = new SettingsWindow();
             sw.Show();
+
         }
     }
 }
