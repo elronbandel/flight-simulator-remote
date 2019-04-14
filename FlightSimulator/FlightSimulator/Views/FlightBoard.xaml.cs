@@ -17,6 +17,8 @@ using FlightSimulator.Model;
 using FlightSimulator.ViewModels;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
+using FlightSimulator.ViewModels;
+using FlightSimulator.Model;
 
 namespace FlightSimulator.Views
 {
@@ -29,6 +31,7 @@ namespace FlightSimulator.Views
         public FlightBoard()
         {
             InitializeComponent();
+            this.DataContext = new FlightBoardViewModel(new FlightSimulatorModel(new TelnetClient()));
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

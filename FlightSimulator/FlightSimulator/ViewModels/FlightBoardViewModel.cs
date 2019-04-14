@@ -16,18 +16,47 @@ namespace FlightSimulator.ViewModels
         {
             this.m_model = model;
         }
+        public string FlightServerIP
+        {
+            get { return Properties.Settings.Default.FlightServerIP; }
+        }
+        public int FlightCommandPort
+        {
+            get { return Properties.Settings.Default.FlightCommandPort; }
+        }
+
+        public int FlightInfoPort
+        {
+            get { return Properties.Settings.Default.FlightInfoPort; }
+        }
         public double Lon
         {
-            get;
+            get
+            {
+                return m_model.Lon;
+            }
         }
 
         public double Lat
         {
-            get;
+            get
+            {
+                return m_model.Lat;
+            }
         }
 
-        #region SettingsCommand
-        
+        #region ConnectCommand
+        private ICommand _connectCommand;
+        public ICommand ConnectCommand
+        {
+            get { return _connectCommand ?? (_connectCommand = new CommandHandler(() => OnConnect())); }
+        }
+        void OnConnect()
+        {
+            m_model.ConnectInfoServer(FlightServerIP, FlightInfoPort);
+            m_model.ConnectCommandsClient(FlightServerIP,FlightCommandPort);
+            m_model.StartInfoServer();
+        }
         #endregion
     }
 }
