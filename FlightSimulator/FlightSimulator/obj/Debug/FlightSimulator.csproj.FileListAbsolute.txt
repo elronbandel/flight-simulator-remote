@@ -50,3 +50,27 @@ C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\Flight
 C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.GenerateResource.cache
 C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CoreCompileInputs.cache
 C:\Users\Dor Nisim\Desktop\Teaching\Advanced Programming 2\Excrecises\Ex2\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CopyComplete
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.exe.config
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.exe
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.pdb
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.dll
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.xml
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\Joystick.baml
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.g.cs
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\FlightBoard.g.cs
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\Joystick.g.cs
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\Windows\SettingsWindow.g.cs
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\App.g.cs
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator_MarkupCompile.cache
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator_MarkupCompile.lref
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.baml
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\FlightBoard.baml
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\Windows\SettingsWindow.baml
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.g.resources
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.Properties.Resources.resources
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.exe
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.pdb
+C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\GeneratedInternalTypeHelper.g.cs
