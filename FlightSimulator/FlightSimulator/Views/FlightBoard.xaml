@@ -18,7 +18,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Connect" Margin="320 10 10 10" Grid.Column="0"/>
-                <Button Content="Settings" Margin="10 10 320 10" Grid.Column="1"/>
+                <Button Content="Settings" Margin="10 10 320 10" Grid.Column="1" Command="{Binding SettingCommand}" />
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.Resources>
@@ -40,7 +40,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Style="{StaticResource LabelStyle}" LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
-                <d3:ChartPlotter Grid.Row="0" Grid.Column="1" LegendVisible="False" Name="plotter">
+                <d3:ChartPlotter Grid.Row="0" Grid.Column="1" LegendVisible="False" Name="plotter" Margin="0.44,0,35.256,0.176">
                 </d3:ChartPlotter>
                 <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
             </Grid>

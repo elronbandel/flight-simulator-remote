@@ -27,8 +27,8 @@ namespace FlightSimulator
             /// Temporary opening settings window from here.
             /// At later stages it will be opened by a button (which is bound to a command).
             /// </summary>
-            SettingsWindow sw = new SettingsWindow();
-            sw.Show();
+           // SettingsWindow sw = new SettingsWindow();
+           // sw.Show();
 
         }
     }

@@ -15,7 +15,7 @@ namespace FlightSimulator.Model
         public event PropertyChangedEventHandler PropertyChanged;
         volatile Boolean stop;
         private Boolean connectionClient, connectionServer;
-        private static ITelnetClient tc;
+        private ITelnetClient tc;
         private TcpListener listener;
         private TcpClient client;
         #region Singleton
@@ -26,19 +26,26 @@ namespace FlightSimulator.Model
             {
                 if (m_Instance == null)
                 {
-                    m_Instance = new FlightSimulatorModel(tc);
+                    m_Instance = new FlightSimulatorModel();
                 }
                 return m_Instance;
             }
+            
         }
         #endregion
         //constructor
-        public FlightSimulatorModel(ITelnetClient telnet)
+        
+        private FlightSimulatorModel()
         {
-            tc = telnet;
             stop = false;
             connectionClient = false;
             connectionServer = false;
+        }
+
+        private FlightSimulatorModel setTelnetClient(ITelnetClient telnet)
+        {
+            tc = telnet;
+            return this;
         }
         #region Properties
         private double aileron;

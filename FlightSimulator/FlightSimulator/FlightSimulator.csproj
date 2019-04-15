@@ -67,6 +67,8 @@
     <Compile Include="Model\CommandHandler.cs" />
     <Compile Include="Model\EventArgs\VirtualJoystickEventArgs.cs" />
     <Compile Include="Model\Interface\IFlightSimulatorModel.cs" />
+    <Compile Include="Model\Interface\ITelnetClient.cs" />
+    <Compile Include="Model\FlightSimulatorModel.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />

@@ -1,5 +1,7 @@
 ﻿using FlightSimulator.Model.Interface;
 using FlightSimulator.Model;
+using FlightSimulator.ViewModels.Windows;
+using FlightSimulator.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +58,20 @@ namespace FlightSimulator.ViewModels
             m_model.ConnectInfoServer(FlightServerIP, FlightInfoPort);
             m_model.ConnectCommandsClient(FlightServerIP,FlightCommandPort);
             m_model.StartInfoServer();
+        }
+        #endregion
+        #region SettingCommand
+        private ICommand _settingCommand;
+        public ICommand SettingCommand
+        {
+            get { return _settingCommand ?? (_settingCommand = new CommandHandler(() => OnSetting())); }
+        }
+        void OnSetting()
+        {
+           var swvm = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
+           var sw = new SettingsWindow() {DataContext = swvm};
+           swvm.OnRequestClose += (s, e) => sw.Close();
+           sw.Show();
         }
         #endregion
     }

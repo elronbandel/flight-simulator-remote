@@ -31,7 +31,7 @@ namespace FlightSimulator.Views
         public FlightBoard()
         {
             InitializeComponent();
-            this.DataContext = new FlightBoardViewModel(new FlightSimulatorModel(new TelnetClient()));
+            this.DataContext = new FlightBoardViewModel(FlightSimulatorModel.Instance);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

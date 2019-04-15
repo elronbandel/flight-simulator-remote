@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\
 FlightSimulator
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\App.xaml
 425284824
 
@@ -16,5 +16,5 @@ C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\
 16-1544362863
 MainWindow.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;Views\Windows\SettingsWindow.xaml;
 
-False
+True
 

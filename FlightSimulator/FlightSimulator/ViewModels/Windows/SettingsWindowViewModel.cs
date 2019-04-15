@@ -7,12 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using FlightSimulator.Views.Windows;
 
 namespace FlightSimulator.ViewModels.Windows
 {
     public class SettingsWindowViewModel : BaseNotify
     {
         private ISettingsModel model;
+        public event EventHandler OnRequestClose;
+
+        private SettingsWindow view;
 
         public SettingsWindowViewModel(ISettingsModel model)
         {
@@ -28,7 +32,6 @@ namespace FlightSimulator.ViewModels.Windows
                 NotifyPropertyChanged("FlightServerIP");
             }
         }
-
         public int FlightCommandPort
         {
             get { return model.FlightCommandPort; }
@@ -38,7 +41,6 @@ namespace FlightSimulator.ViewModels.Windows
                 NotifyPropertyChanged("FlightCommandPort");
             }
         }
-
         public int FlightInfoPort
         {
             get { return model.FlightInfoPort; }
@@ -49,16 +51,17 @@ namespace FlightSimulator.ViewModels.Windows
             }
         }
 
-     
-
+        
         public void SaveSettings()
         {
             model.SaveSettings();
+            OnRequestClose(this, null);
         }
 
         public void ReloadSettings()
         {
             model.ReloadSettings();
+            OnRequestClose(this, null);
         }
 
         #region Commands
@@ -73,7 +76,7 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnClick()
         {
-            model.SaveSettings();
+            SaveSettings();
         }
         #endregion
 
@@ -88,7 +91,7 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnCancel()
         {
-            model.ReloadSettings();
+            ReloadSettings();
         }
         #endregion
         #endregion
