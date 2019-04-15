@@ -81,7 +81,6 @@ C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\Joystick.g.cs
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\Windows\SettingsWindow.g.cs
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\App.g.cs
-C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator_MarkupCompile.cache
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator_MarkupCompile.lref
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.exe
@@ -91,7 +90,6 @@ C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\FlightSimulator.pdb
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.dll
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\bin\Debug\DynamicDataDisplay.xml
-C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.baml
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\FlightBoard.baml
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\Windows\SettingsWindow.baml
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.g.resources
@@ -99,3 +97,7 @@ C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.GenerateResource.cache
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CoreCompileInputs.cache
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\FlightSimulator.csproj.CopyComplete
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\ManualControl.g.cs
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\ManualControl.baml
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.baml

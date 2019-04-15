@@ -15,8 +15,7 @@ namespace FlightSimulator.ViewModels.Windows
     {
         private ISettingsModel model;
         public event EventHandler OnRequestClose;
-
-        private SettingsWindow view;
+        
 
         public SettingsWindowViewModel(ISettingsModel model)
         {

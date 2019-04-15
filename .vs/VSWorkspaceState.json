@@ -2,12 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\FlightSimulator",
+    "\\FlightSimulator\\FlightSimulator",
     "\\FlightSimulator\\FlightSimulator\\Model",
-    "\\FlightSimulator\\FlightSimulator\\Model\\Interface",
-    "\\FlightSimulator\\FlightSimulator\\Properties",
+    "\\FlightSimulator\\FlightSimulator\\Model\\EventArgs",
+    "\\FlightSimulator\\FlightSimulator\\ViewModels",
+    "\\FlightSimulator\\FlightSimulator\\ViewModels\\Windows",
     "\\FlightSimulator\\FlightSimulator\\Views",
     "\\FlightSimulator\\FlightSimulator\\Views\\Windows"
   ],
-  "SelectedNode": "\\FlightSimulator",
+  "SelectedNode": "\\FlightSimulator\\FlightSimulator\\Views\\ManualControl.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

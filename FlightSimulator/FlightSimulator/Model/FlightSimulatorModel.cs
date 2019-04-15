@@ -40,6 +40,10 @@ namespace FlightSimulator.Model
             stop = false;
             connectionClient = false;
             connectionServer = false;
+            aileron = 0;
+            Rudder = 0.2;
+            elevator = 0;
+            throttle = 0;
         }
 
         private FlightSimulatorModel setTelnetClient(ITelnetClient telnet)
@@ -49,29 +53,18 @@ namespace FlightSimulator.Model
         }
         #region Properties
         private double aileron;
-        public double Aileron {
-            get
-            {
-                tc.Write("get aileron"); //check how to write commands to the simulator.
-                return double.Parse(tc.Read());
-            }
-            set
-            {
-                aileron = value;
-                tc.Write($"set aileron {value}"); //check how to write commands to the simulator.
-            }
-        }
+        public double Aileron { get { return aileron; } set { aileron = value; } }
         //do here as we did with Aileron property.
         private double throttle;
         public double Throttle {
-            get => throw new NotImplementedException(); set => throw new NotImplementedException();
+            get { return throttle; } set { throttle = value; }
         }
         //do here as we did with Aileron property.
         private double elevator;
-        public double Elevator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Elevator { get { return elevator; } set { elevator = value; } }
         //do here as we did with Aileron property.
-        private double rudder;
-        public double Rudder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        
+        public double Rudder { get; set; }
         private double lon;
         public double Lon
         {

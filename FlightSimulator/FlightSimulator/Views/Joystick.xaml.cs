@@ -63,7 +63,7 @@ namespace FlightSimulator.Views
             get { return Convert.ToDouble(GetValue(AileronStepProperty)); }
             set
             {
-                if (value < 1) value = 1; else if (value > 90) value = 90;
+                if (value < 0) value = 0; else if (value > 1) value = 1;
                 SetValue(AileronStepProperty, Math.Round(value));
             }
         }
@@ -74,7 +74,7 @@ namespace FlightSimulator.Views
             get { return Convert.ToDouble(GetValue(ElevatorStepProperty)); }
             set
             {
-                if (value < 1) value = 1; else if (value > 50) value = 50;
+                if (value < 0) value = 0; else if (value > 1) value = 1;
                 SetValue(ElevatorStepProperty, value);
             }
         }
@@ -134,9 +134,7 @@ namespace FlightSimulator.Views
 
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
-            ///!!!!!!!!!!!!!!!!!
-            /// YOU MUST CHANGE THE FUNCTION!!!!
-            ///!!!!!!!!!!!!!!
+            ///
             if (!Knob.IsMouseCaptured) return;
 
             Point newPos = e.GetPosition(Base);
@@ -146,8 +144,8 @@ namespace FlightSimulator.Views
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
-            Aileron = -deltaPos.Y;
-            Elevator = deltaPos.X;
+            Elevator = -deltaPos.Y / (canvasWidth / 2);
+            Aileron = deltaPos.X / (canvasWidth / 2);
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;
@@ -155,10 +153,14 @@ namespace FlightSimulator.Views
             if (Moved == null ||
                 (!(Math.Abs(_prevAileron - Aileron) > AileronStep) && !(Math.Abs(_prevElevator - Elevator) > ElevatorStep)))
                 return;
+            else
+            {
+                _prevAileron = Aileron;
+                _prevElevator = Elevator;
+            }
 
             Moved?.Invoke(this, new VirtualJoystickEventArgs { Aileron = Aileron, Elevator = Elevator });
-            _prevAileron = Aileron;
-            _prevElevator = Elevator;
+            
 
         }
 

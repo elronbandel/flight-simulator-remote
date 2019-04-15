@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\
 FlightSimulator
 none
 false
 DEBUG;TRACE
-C:\Users\User\Desktop\gitAdvProg2\AdvProg2\flight-simulator-remote\FlightSimulator\FlightSimulator\App.xaml
-425284824
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\App.xaml
+5-689490613
 
-23-1877846456
-16163121354
-MainWindow.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;Views\Windows\SettingsWindow.xaml;
+241302869168
+16-1544362863
+MainWindow.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;Views\ManualControl.xaml;Views\Windows\SettingsWindow.xaml;
 
-False
+True
 

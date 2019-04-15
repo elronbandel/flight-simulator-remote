@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\App.xaml
-425284824
+5-689490613
 
-18753564487
+20-2074473077
 16-1544362863
-MainWindow.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;Views\Windows\SettingsWindow.xaml;
+MainWindow.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;Views\ManualControl.xaml;Views\Windows\SettingsWindow.xaml;
 
-False
+True
 

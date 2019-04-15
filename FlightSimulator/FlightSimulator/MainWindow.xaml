@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-   
-    
-    <local:FlightBoard Grid.Row="1"/>
+        Title="MainWindow" >
+
+
+  <local:ManualControl Height="530" Width="530"></local:ManualControl>
 </Window>

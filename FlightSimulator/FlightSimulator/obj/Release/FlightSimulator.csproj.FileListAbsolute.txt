@@ -1,0 +1,7 @@
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\FlightSimulator.csprojAssemblyReference.cache
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\Views\FlightBoard.g.cs
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\Views\ManualControl.g.cs
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\Views\Windows\SettingsWindow.g.cs
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\FlightSimulator_MarkupCompile.cache
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Release\FlightSimulator_MarkupCompile.lref

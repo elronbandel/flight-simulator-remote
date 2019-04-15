@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+  
     <Grid>
         <Canvas  x:Name="Base" Margin="0" Width="340" Height="340">
             <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
@@ -135,4 +136,5 @@
             </Canvas>
         </Canvas>
     </Grid>
+  
 </UserControl>
