@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" >
 
+  <Grid>
 
-  <local:ManualControl Height="530" Width="530"></local:ManualControl>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+
+    <TabControl Grid.Column="1">
+      <TabItem Header="Manual">
+        <local:ManualControl Height="525" Width="525"></local:ManualControl>
+      </TabItem>
+      <TabItem Header="Auto Pilot" />
+    </TabControl>
+    
+
+    
+    <local:FlightBoard  Grid.Column="0"/>
+  </Grid>
 </Window>

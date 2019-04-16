@@ -39,6 +39,7 @@
       <HintPath>..\dll\DynamicDataDisplay.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Windows.Interactivity" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />

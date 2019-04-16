@@ -6,19 +6,19 @@
              xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
              xmlns:local="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="450" d:DesignWidth="450" Loaded="UserControl_Loaded">
     <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="9*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Connect" Margin="320 10 10 10" Grid.Column="0"/>
-                <Button Content="Settings" Margin="10 10 320 10" Grid.Column="1" Command="{Binding SettingCommand}" />
+                <Button Content="Connect"  Grid.Column="0" Margin="110,10,30.024,9.704"/>
+            <Button Content="Settings"  Grid.Column="1" Margin="36.976,10,94.048,9.704" Command="{Binding SettingCommand}" />
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.Resources>

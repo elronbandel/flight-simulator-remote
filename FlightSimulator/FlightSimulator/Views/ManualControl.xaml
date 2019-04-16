@@ -50,7 +50,9 @@
     <TextBlock x:Name="RudderValue" Text="{Binding ElementName=RudderSlider, Path=Value, StringFormat=N2}" Grid.Row="6" Grid.Column="5" Grid.RowSpan="1"  TextAlignment="right" VerticalAlignment="center" FontSize="18"></TextBlock>
     
     <local:Joystick x:Name="Joystick" ElevatorStep="0.01"  AileronStep="0.01" 
-                    Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+                    Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="3">
+    </local:Joystick>
+    
     <TextBlock Text="aileron" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"  TextAlignment="center" VerticalAlignment="center" FontSize="18"></TextBlock>
     <TextBlock x:Name="AileronValue" Text="{Binding ElementName=Joystick, Path=Aileron, StringFormat=N2}" Grid.Row="0" Grid.Column="5"  TextAlignment="center" VerticalAlignment="center" FontSize="18"></TextBlock>
 
@@ -62,6 +64,7 @@
     <TextBlock x:Name="ElavatorValue" Text="{Binding ElementName=Joystick, Path=Elevator, StringFormat=N2}" Grid.Row="1" Grid.Column="6"  TextAlignment="center" VerticalAlignment="center" FontSize="18"></TextBlock>
 
 
-  </Grid>
+  
+</Grid>
    
 </UserControl>
