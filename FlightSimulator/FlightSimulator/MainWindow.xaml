@@ -18,7 +18,9 @@
       <TabItem Header="Manual">
         <local:ManualControl Height="525" Width="525"></local:ManualControl>
       </TabItem>
-      <TabItem Header="Auto Pilot" />
+      <TabItem Header="Auto Pilot" >
+        <local:AutopilotControl Height="525" Width="525"/>
+      </TabItem>
     </TabControl>
     
 

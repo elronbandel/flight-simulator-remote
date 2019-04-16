@@ -17,19 +17,16 @@ using FlightSimulator.Model;
 using FlightSimulator.ViewModels;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
-using FlightSimulator.ViewModels;
-using FlightSimulator.Model;
 
 namespace FlightSimulator.Views
 {
-    public partial class ManualControl : UserControl
+    public partial class AutopilotControl : UserControl
     {
-        public ManualControl()
+        public AutopilotControl()
         {
             InitializeComponent();
-            var vm = new ManualControlViewModel(FlightSimulatorModel.Instance);
+            var vm = new AutopilotControlViewModel(FlightSimulatorModel.Instance);
             DataContext = vm;
-            Joystick.Moved += vm.update;
         }
     }
 }

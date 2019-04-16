@@ -101,3 +101,5 @@ C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\ManualControl.g.cs
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\ManualControl.baml
 C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\MainWindow.baml
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\AutopilotControl.g.cs
+C:\Users\elron\source\repos\elronbandel\flight-simulator-remote\FlightSimulator\FlightSimulator\obj\Debug\Views\AutopilotControl.baml

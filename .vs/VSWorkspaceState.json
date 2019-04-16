@@ -6,11 +6,11 @@
     "\\FlightSimulator\\FlightSimulator\\Model",
     "\\FlightSimulator\\FlightSimulator\\Model\\EventArgs",
     "\\FlightSimulator\\FlightSimulator\\Model\\Interface",
+    "\\FlightSimulator\\FlightSimulator\\Properties",
     "\\FlightSimulator\\FlightSimulator\\ViewModels",
     "\\FlightSimulator\\FlightSimulator\\ViewModels\\Windows",
-    "\\FlightSimulator\\FlightSimulator\\Views",
-    "\\FlightSimulator\\FlightSimulator\\Views\\Windows"
+    "\\FlightSimulator\\FlightSimulator\\Views"
   ],
-  "SelectedNode": "\\FlightSimulator\\FlightSimulator\\Views\\FlightBoard.xaml",
+  "SelectedNode": "\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
   "PreviewInSolutionExplorer": false
 }
