@@ -17,8 +17,6 @@ using FlightSimulator.Model;
 using FlightSimulator.ViewModels;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
-using FlightSimulator.ViewModels;
-using FlightSimulator.Model;
 
 namespace FlightSimulator.Views
 {
@@ -28,13 +26,17 @@ namespace FlightSimulator.Views
     public partial class FlightBoard : UserControl
     {
         ObservableDataSource<Point> planeLocations = null;
+        FlightBoardViewModel vm = null;
         public FlightBoard()
         {
             InitializeComponent();
-            this.DataContext = new FlightBoardViewModel(FlightSimulatorModel.Instance);
+            vm = new FlightBoardViewModel(
+                FlightSimulatorModel.Instance.SetTelnetClient(new TelnetClient()));
+            this.DataContext = vm;
+            vm.PropertyChanged += Vm_PropertyChanged;
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        public void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             planeLocations = new ObservableDataSource<Point>();
             // Set identity mapping of point in collection to point on plot
@@ -45,10 +47,13 @@ namespace FlightSimulator.Views
 
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
+            if (e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                Point p1 = new Point(0,0);            // Fill here!
-                planeLocations.AppendAsync(Dispatcher, p1);
+                if (sender is FlightBoardViewModel fbvm)
+                {
+                    Point p1 = new Point(fbvm.Lon, fbvm.Lat);
+                    planeLocations.AppendAsync(Dispatcher, p1);
+                }
             }
         }
 

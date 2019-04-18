@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FlightSimulator.Model.Interface;
 using System.ComponentModel;
+using System.Threading;
 
 namespace FlightSimulator.Model
 {
@@ -18,6 +19,7 @@ namespace FlightSimulator.Model
         private ITelnetClient tc;
         private TcpListener listener;
         private TcpClient client;
+        private Boolean isTelnetSet = false;
         #region Singleton
         private static IFlightSimulatorModel m_Instance = null;
         public static IFlightSimulatorModel Instance
@@ -41,71 +43,120 @@ namespace FlightSimulator.Model
             connectionClient = false;
             connectionServer = false;
             aileron = 0;
-            Rudder = 0.2;
+            rudder = 0;
             elevator = 0;
             throttle = 0;
         }
 
-        private FlightSimulatorModel setTelnetClient(ITelnetClient telnet)
-        {
-            tc = telnet;
-            return this;
-        }
         #region Properties
         private double aileron;
-        public double Aileron { get { return aileron; } set { aileron = value; } }
+        public double Aileron { get { return aileron; }
+            set {
+                aileron = value;
+            } }
         //do here as we did with Aileron property.
         private double throttle;
         public double Throttle {
-            get { return throttle; } set { throttle = value; }
+            get { return throttle; }
+            set {
+                
+                throttle = value;
+            }
         }
         //do here as we did with Aileron property.
         private double elevator;
-        public double Elevator { get { return elevator; } set { elevator = value; } }
+        public double Elevator { get { return elevator; }
+            set {
+                elevator = value;
+            } }
         //do here as we did with Aileron property.
-        
-        public double Rudder { get; set; }
+        private double rudder;
+        public double Rudder { get
+            {
+                return rudder;
+            }
+            set
+            {
+                rudder = value;
+            }
+        }
         private double lon;
         public double Lon
         {
+            set
+            {
+                lon = value;
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Lon"));
+            }
             get
             {
-                tc.Write("get lon"); //check how to write commands to the simulator.
-                return double.Parse(tc.Read());
+                //check if current value is different from former value.
+                return lon;
             }
         }
         private double lat;
         public double Lat
         {
+            set
+            {
+                lat = value;
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Lat"));
+            }
             get
             {
-                tc.Write("get lat"); //check how to write commands to the simulator.
-                return double.Parse(tc.Read());
+                return lat;
+            }
+        }
+        String CommandsText
+        {
+            set
+            {
+                string val = value;
+                int index = 0;
+                index = val.IndexOf('\n');
+                while (index != -1)
+                {
+                    string sub = val.Substring(0, index);
+                    val.Remove(0, index + 1);
+                    tc.Write(sub);
+                    index = val.IndexOf('\n');
+                }
+                tc.Write(val);
             }
         }
         #endregion
         #region TCP
+        public IFlightSimulatorModel SetTelnetClient(ITelnetClient telnet)
+        {
+            if (!isTelnetSet)
+            {
+                tc = telnet;
+            }
+            return this;
+        }
+
         public void ConnectCommandsClient(string FlightServerIP, int FlightCommandPort)
         {
-            if (!connectionClient)
+            if (connectionClient)
             {
-                tc.Connect(FlightServerIP, FlightCommandPort);
-                connectionClient = true;
+                DisconnectCommandsClient();
             }
+            tc.Connect(FlightServerIP, FlightCommandPort);
+            connectionClient = true;
             
         }
 
         public void ConnectInfoServer(string FlightServerIP, int FlightInfoPort)
         {
-            if (!connectionServer)
+            if (connectionServer)
             {
-                IPEndPoint ep = new IPEndPoint(IPAddress.Parse(FlightServerIP), FlightInfoPort);
-                listener = new TcpListener(ep);
-                listener.Start();
-                client = listener.AcceptTcpClient(); // this is how we should accept the client or just use the TelnetClient?
-                connectionServer = true;
+                DisconnectInfoServer();
             }
-            
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(FlightServerIP), FlightInfoPort);
+            listener = new TcpListener(ep);
+            listener.Start();
+            client = listener.AcceptTcpClient();
+            connectionServer = true;
         }
 
         public void DisconnectCommandsClient()
@@ -123,7 +174,42 @@ namespace FlightSimulator.Model
 
         public void StartInfoServer()
         {
-            //close former connections before creating a new one.
+            new Thread(() => {
+                client.ReceiveBufferSize = 1024;
+                NetworkStream stream = client.GetStream();
+                byte[] bytes = new byte[client.ReceiveBufferSize];
+                int byteNum;
+                int EndOfLine = 0;
+                string result = "";
+                string remainder = "";
+                bool IsEndOfLine;
+
+                while (!stop)
+                {                    
+                    byteNum = stream.Read(bytes, 0,client.ReceiveBufferSize);
+                    String msg = Encoding.ASCII.GetString(bytes,0,byteNum);
+                    IsEndOfLine = true;
+                    result = remainder;
+                    while (IsEndOfLine)
+                    {
+                        EndOfLine = msg.IndexOf('\n');
+                        if (EndOfLine != -1)
+                        {
+                            result += msg.Substring(0, EndOfLine);
+                            msg.Remove(EndOfLine + 1);
+                            ParseLonLat(result);
+                            result = "";
+                            remainder = msg;
+                        }
+                        else
+                        {
+                            remainder += msg;
+                            IsEndOfLine = false;
+                        }
+                    }
+                }
+            }).Start();
+            //close connections.
             if (connectionClient)
             {
                 DisconnectCommandsClient();
@@ -132,8 +218,37 @@ namespace FlightSimulator.Model
             {
                 DisconnectInfoServer();
             }
-            
+        }
+
+        private void ParseLonLat(string msg)
+        {
+            int index = msg.IndexOf(',');
+            string sub = msg.Substring(0, index);
+            Lon = Double.Parse(sub);
+            sub = msg.Substring(index + 1);
+            index = sub.IndexOf(',');
+            sub = sub.Substring(0, index);
+            Lat = Double.Parse(sub);
         }
         #endregion
+        public void NotifyPropertySet(object s, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "Throttle")
+            {
+                tc.Write($"set /controls/engines/current-engine/throttle {Throttle}");
+            }
+            if (e.PropertyName == "Rudder")
+            {
+                tc.Write($"set /controls/flight/rudder {Rudder}");
+            }
+            if (e.PropertyName == "Aileron")
+            {
+                tc.Write($"set /controls/flight/aileron {Aileron}");
+            }
+            if (e.PropertyName == "Elevator")
+            {
+                tc.Write($"set /controls/flight/elevator {Elevator}");
+            }
+        }
     }
 }

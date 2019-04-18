@@ -30,9 +30,9 @@
       <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
 
-    <TextBox x:Name="CommandsTB"  Text="{Binding CommandsText}" Style="{StaticResource RedWhenDisabledTextBox}" IsReadOnly="{Binding Executing}" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"/>
-        <Button  Content="ok" IsEnabled="{Binding ExecutingFinshed}" Grid.Row="1" Grid.Column="0" Command="{Binding ExecutionCommand}" />
-        <Button  Content="clear"  IsEnabled="{Binding ExecutingFinshed}"  Grid.Row="1" Grid.Column="1" Command="{Binding ClearCommand}" />
+    <TextBox x:Name="CommandsTB"  Text="{Binding CommandsText}" Style="{StaticResource RedWhenDisabledTextBox}" IsReadOnly="{Binding Executing}" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" AcceptsReturn="True"/>
+        <Button  Content="ok" IsEnabled="{Binding ExecutingFinshed}" Grid.Row="1" Grid.Column="0" Margin="200 12 10 12" Command="{Binding ExecutionCommand}" />
+        <Button  Content="clear"  IsEnabled="{Binding ExecutingFinshed}"  Grid.Row="1" Grid.Column="1" Margin="10 12 190 12"  Command="{Binding ClearCommand}" />
   </Grid>
     
    

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model.Interface
 {
-    interface ITelnetClient
+    public interface ITelnetClient
     {
         void Connect(string ip, int port);
         void Write(string command);

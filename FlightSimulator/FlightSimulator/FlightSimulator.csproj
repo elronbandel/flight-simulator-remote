@@ -48,7 +48,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Controls"/>
+    <Reference Include="System.Windows.Controls" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -71,6 +71,7 @@
     <Compile Include="Model\Interface\ITelnetClient.cs" />
     <Compile Include="Model\FlightSimulatorModel.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
+    <Compile Include="Model\TelnetClient.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\ManualControlViewModel.cs" />
@@ -79,19 +80,15 @@
     <Compile Include="Views\FlightBoard.xaml.cs">
       <DependentUpon>FlightBoard.xaml</DependentUpon>
     </Compile>
-    
     <Compile Include="Views\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
-    
     <Compile Include="Views\ManualControl.xaml.cs">
       <DependentUpon>ManualControl.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="Views\AutopilotControl.xaml.cs">
       <DependentUpon>AutopilotControl.xaml</DependentUpon>
     </Compile>
-    
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

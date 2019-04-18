@@ -13,12 +13,13 @@ namespace FlightSimulator.Model.Interface
         double Throttle { get; set; }
         double Elevator { get; set; }
         double Rudder { get; set; }
-        double Lon { get; }
-        double Lat { get; }
+        double Lon { get; set; }
+        double Lat { get; set; }
         void ConnectInfoServer(string FlightServerIP, int FlightInfoPort);
         void DisconnectInfoServer();
         void StartInfoServer();
         void ConnectCommandsClient(string FlightServerIP, int FlightCommandPort);
         void DisconnectCommandsClient();
+        IFlightSimulatorModel SetTelnetClient(ITelnetClient telnetClient);
     }
 }

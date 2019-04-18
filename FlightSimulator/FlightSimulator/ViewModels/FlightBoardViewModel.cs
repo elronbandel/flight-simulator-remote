@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.ComponentModel;
 
 namespace FlightSimulator.ViewModels
 {
@@ -17,11 +18,16 @@ namespace FlightSimulator.ViewModels
         public FlightBoardViewModel(IFlightSimulatorModel model)
         {
             this.m_model = model;
+            m_model.PropertyChanged += delegate (object s, PropertyChangedEventArgs e)
+            { NotifyPropertyChanged(e.PropertyName); };
         }
+        #region Properties
+
         public string FlightServerIP
         {
             get { return Properties.Settings.Default.FlightServerIP; }
         }
+
         public int FlightCommandPort
         {
             get { return Properties.Settings.Default.FlightCommandPort; }
@@ -36,6 +42,7 @@ namespace FlightSimulator.ViewModels
             get
             {
                 return m_model.Lon;
+
             }
         }
 
@@ -44,9 +51,10 @@ namespace FlightSimulator.ViewModels
             get
             {
                 return m_model.Lat;
+
             }
         }
-
+        #endregion
         #region ConnectCommand
         private ICommand _connectCommand;
         public ICommand ConnectCommand
@@ -54,9 +62,9 @@ namespace FlightSimulator.ViewModels
             get { return _connectCommand ?? (_connectCommand = new CommandHandler(() => OnConnect())); }
         }
         void OnConnect()
-        {
+        { 
             m_model.ConnectInfoServer(FlightServerIP, FlightInfoPort);
-            m_model.ConnectCommandsClient(FlightServerIP,FlightCommandPort);
+            m_model.ConnectCommandsClient(FlightServerIP, FlightCommandPort);
             m_model.StartInfoServer();
         }
         #endregion
@@ -68,10 +76,10 @@ namespace FlightSimulator.ViewModels
         }
         void OnSetting()
         {
-           var swvm = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
-           var sw = new SettingsWindow() {DataContext = swvm};
-           swvm.OnRequestClose += (s, e) => sw.Close();
-           sw.Show();
+            var swvm = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
+            var sw = new SettingsWindow() { DataContext = swvm };
+            swvm.OnRequestClose += (s, e) => sw.Close();
+            sw.Show();
         }
         #endregion
     }

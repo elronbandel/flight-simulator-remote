@@ -17,13 +17,14 @@ namespace FlightSimulator.ViewModels
         public ManualControlViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
+            PropertyChanged += model.NotifyPropertySet;
         }
         public double Throttle
         {
             get { return model.Throttle; }
             set {
                 model.Throttle = value;
-                NotifyPropertyChanged("Thorttle");
+                NotifyPropertyChanged("Throttle");
             }
         }
         public double Rudder
@@ -50,11 +51,11 @@ namespace FlightSimulator.ViewModels
             set
             {
                 model.Elevator = value;
-                NotifyPropertyChanged("Elvator");
+                NotifyPropertyChanged("Elevator");
             }
         }
 
-        public void update(object sender, VirtualJoystickEventArgs args)
+        public void Update(object sender, VirtualJoystickEventArgs args)
         {
             Aileron = args.Aileron;
             Elevator = args.Elevator;

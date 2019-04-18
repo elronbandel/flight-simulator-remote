@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator.Views"
         mc:Ignorable="d"
-        Title="MainWindow" >
+        Title="MainWindow">
 
   <Grid>
 
@@ -16,10 +16,10 @@
 
     <TabControl Grid.Column="1">
       <TabItem Header="Manual">
-        <local:ManualControl Height="525" Width="525"></local:ManualControl>
+        <local:ManualControl/>
       </TabItem>
       <TabItem Header="Auto Pilot" >
-        <local:AutopilotControl Height="525" Width="525"/>
+        <local:AutopilotControl Height="auto" Width="auto"/>
       </TabItem>
     </TabControl>
     

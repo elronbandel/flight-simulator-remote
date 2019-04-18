@@ -19,7 +19,9 @@ namespace FlightSimulator.ViewModels
         public AutopilotControlViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
+            PropertyChanged += model.NotifyPropertySet;
         }
+        #region Properties
         private String commandsText;
         public String CommandsText
         {
@@ -27,6 +29,7 @@ namespace FlightSimulator.ViewModels
             set
             {
                 commandsText = value;
+                model.CommandsText = value;
                 NotifyPropertyChanged("CommandsText");
             }
         }
@@ -55,9 +58,46 @@ namespace FlightSimulator.ViewModels
         public void ExecuteCommands()
         {
             Executing = true;
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
             Executing = false;
         }
+
+        public double Throttle
+        {
+            get { return model.Throttle; }
+            set {
+                model.Throttle = value;
+                NotifyPropertyChanged("Throttle");
+            }
+        }
+        public double Rudder
+        {
+            get { return model.Rudder; }
+            set
+            {
+                model.Rudder = value;
+                NotifyPropertyChanged("Rudder");
+            }
+        }
+        public double Aileron
+        {
+            get { return model.Aileron; }
+            set
+            {
+                model.Aileron = value;
+                NotifyPropertyChanged("Aileron");
+            }
+        }
+        public double Elevator
+        {
+            get { return model.Elevator; }
+            set
+            {
+                model.Elevator = value;
+                NotifyPropertyChanged("Elevator");
+            }
+        }
+        #endregion
         #region Commands
         #region ClearCommand
         private ICommand _clearCommand;

@@ -25,7 +25,8 @@ namespace FlightSimulator.Views
         public AutopilotControl()
         {
             InitializeComponent();
-            var vm = new AutopilotControlViewModel(FlightSimulatorModel.Instance);
+            var vm = new AutopilotControlViewModel(
+                FlightSimulatorModel.Instance.SetTelnetClient(new TelnetClient()));
             DataContext = vm;
         }
     }

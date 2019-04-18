@@ -17,8 +17,6 @@ using FlightSimulator.Model;
 using FlightSimulator.ViewModels;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
-using FlightSimulator.ViewModels;
-using FlightSimulator.Model;
 
 namespace FlightSimulator.Views
 {
@@ -27,9 +25,10 @@ namespace FlightSimulator.Views
         public ManualControl()
         {
             InitializeComponent();
-            var vm = new ManualControlViewModel(FlightSimulatorModel.Instance);
+            var vm = new ManualControlViewModel(
+                FlightSimulatorModel.Instance.SetTelnetClient(new TelnetClient()));
             DataContext = vm;
-            Joystick.Moved += vm.update;
+            Joystick.Moved += vm.Update;
         }
     }
 }
