@@ -21,5 +21,7 @@ namespace FlightSimulator.Model.Interface
         void ConnectCommandsClient(string FlightServerIP, int FlightCommandPort);
         void DisconnectCommandsClient();
         IFlightSimulatorModel SetTelnetClient(ITelnetClient telnetClient);
+        void NotifyPropertySet(object s, PropertyChangedEventArgs e);
+        void Execute(String command);
     }
 }

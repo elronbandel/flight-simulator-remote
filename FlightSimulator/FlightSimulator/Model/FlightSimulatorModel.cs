@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using FlightSimulator.Model.Interface;
 using System.ComponentModel;
 using System.Threading;
+using FlightSimulator.ViewModels;
 
 namespace FlightSimulator.Model
 {
-    public class FlightSimulatorModel : IFlightSimulatorModel 
+    public class FlightSimulatorModel : BaseNotify, IFlightSimulatorModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+
         volatile Boolean stop;
         private Boolean connectionClient, connectionServer;
         private ITelnetClient tc;
@@ -32,11 +33,11 @@ namespace FlightSimulator.Model
                 }
                 return m_Instance;
             }
-            
+
         }
         #endregion
         //constructor
-        
+
         private FlightSimulatorModel()
         {
             stop = false;
@@ -47,31 +48,46 @@ namespace FlightSimulator.Model
             elevator = 0;
             throttle = 0;
         }
+        public void Execute(string command)
+        {
+            tc.Write(command);
+        }
 
         #region Properties
         private double aileron;
-        public double Aileron { get { return aileron; }
-            set {
+        public double Aileron
+        {
+            get { return aileron; }
+            set
+            {
                 aileron = value;
-            } }
+            }
+        }
         //do here as we did with Aileron property.
         private double throttle;
-        public double Throttle {
+        public double Throttle
+        {
             get { return throttle; }
-            set {
-                
+            set
+            {
                 throttle = value;
             }
         }
         //do here as we did with Aileron property.
         private double elevator;
-        public double Elevator { get { return elevator; }
-            set {
+        public double Elevator
+        {
+            get { return elevator; }
+            set
+            {
                 elevator = value;
-            } }
+            }
+        }
         //do here as we did with Aileron property.
         private double rudder;
-        public double Rudder { get
+        public double Rudder
+        {
+            get
             {
                 return rudder;
             }
@@ -86,7 +102,7 @@ namespace FlightSimulator.Model
             set
             {
                 lon = value;
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Lon"));
+                NotifyPropertyChanged("Lon");
             }
             get
             {
@@ -100,7 +116,7 @@ namespace FlightSimulator.Model
             set
             {
                 lat = value;
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Lat"));
+                NotifyPropertyChanged("Lat");
             }
             get
             {
@@ -143,7 +159,7 @@ namespace FlightSimulator.Model
             }
             tc.Connect(FlightServerIP, FlightCommandPort);
             connectionClient = true;
-            
+
         }
 
         public void ConnectInfoServer(string FlightServerIP, int FlightInfoPort)
@@ -174,7 +190,8 @@ namespace FlightSimulator.Model
 
         public void StartInfoServer()
         {
-            new Thread(() => {
+            new Thread(() =>
+            {
                 client.ReceiveBufferSize = 1024;
                 NetworkStream stream = client.GetStream();
                 byte[] bytes = new byte[client.ReceiveBufferSize];
@@ -185,9 +202,9 @@ namespace FlightSimulator.Model
                 bool IsEndOfLine;
 
                 while (!stop)
-                {                    
-                    byteNum = stream.Read(bytes, 0,client.ReceiveBufferSize);
-                    String msg = Encoding.ASCII.GetString(bytes,0,byteNum);
+                {
+                    byteNum = stream.Read(bytes, 0, client.ReceiveBufferSize);
+                    String msg = Encoding.ASCII.GetString(bytes, 0, byteNum);
                     IsEndOfLine = true;
                     result = remainder;
                     while (IsEndOfLine)
@@ -233,21 +250,21 @@ namespace FlightSimulator.Model
         #endregion
         public void NotifyPropertySet(object s, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "Throttle")
+            if (e.PropertyName == "Throttle")
             {
-                tc.Write($"set /controls/engines/current-engine/throttle {Throttle}");
+                Execute($"set /controls/engines/current-engine/throttle {Throttle}");
             }
             if (e.PropertyName == "Rudder")
             {
-                tc.Write($"set /controls/flight/rudder {Rudder}");
+                Execute($"set /controls/flight/rudder {Rudder}");
             }
             if (e.PropertyName == "Aileron")
             {
-                tc.Write($"set /controls/flight/aileron {Aileron}");
+                Execute($"set /controls/flight/aileron {Aileron}");
             }
             if (e.PropertyName == "Elevator")
             {
-                tc.Write($"set /controls/flight/elevator {Elevator}");
+                Execute($"set /controls/flight/elevator {Elevator}");
             }
         }
     }

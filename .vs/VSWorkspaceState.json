@@ -11,6 +11,6 @@
     "\\FlightSimulator\\FlightSimulator\\ViewModels\\Windows",
     "\\FlightSimulator\\FlightSimulator\\Views"
   ],
-  "SelectedNode": "\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
+  "SelectedNode": "\\FlightSimulator\\FlightSimulator\\ViewModels\\FlightBoardViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

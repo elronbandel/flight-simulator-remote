@@ -19,7 +19,7 @@ namespace FlightSimulator.ViewModels
         public AutopilotControlViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
-            PropertyChanged += model.NotifyPropertySet;
+           // PropertyChanged += model.NotifyPropertySet;
         }
         #region Properties
         private String commandsText;
@@ -29,7 +29,6 @@ namespace FlightSimulator.ViewModels
             set
             {
                 commandsText = value;
-                model.CommandsText = value;
                 NotifyPropertyChanged("CommandsText");
             }
         }
@@ -57,8 +56,15 @@ namespace FlightSimulator.ViewModels
         }
         public void ExecuteCommands()
         {
+            //split the commands to seprate commands:
+            string[] commands = commandsText.Split(new[] { "\r\n", "\r", "\n" },StringSplitOptions.None);
             Executing = true;
-            Thread.Sleep(2000);
+            foreach (string command in commands)
+            {
+                model.Execute(command);
+                Thread.Sleep(2000);
+            }
+            
             Executing = false;
         }
 
