@@ -16,6 +16,7 @@ namespace FlightSimulator.Model
     {
 
         volatile Boolean stop;
+        private double changeTreshold;
         private Boolean connectionClient, connectionServer;
         private ITelnetClient tc;
         private TcpListener listener;
@@ -43,66 +44,35 @@ namespace FlightSimulator.Model
             stop = false;
             connectionClient = false;
             connectionServer = false;
-            aileron = 0;
-            rudder = 0;
-            elevator = 0;
-            throttle = 0;
+            changeTreshold = 0.001;
+            
         }
         public void Execute(string command)
         {
-            tc.Write(command);
+            if (connectionClient)
+                tc.Write(command);
         }
 
         #region Properties
-        private double aileron;
-        public double Aileron
-        {
-            get { return aileron; }
-            set
-            {
-                aileron = value;
-            }
-        }
-        //do here as we did with Aileron property.
-        private double throttle;
-        public double Throttle
-        {
-            get { return throttle; }
-            set
-            {
-                throttle = value;
-            }
-        }
-        //do here as we did with Aileron property.
-        private double elevator;
-        public double Elevator
-        {
-            get { return elevator; }
-            set
-            {
-                elevator = value;
-            }
-        }
-        //do here as we did with Aileron property.
-        private double rudder;
-        public double Rudder
-        {
-            get
-            {
-                return rudder;
-            }
-            set
-            {
-                rudder = value;
-            }
-        }
+            #region ControlProperties
+        
+        public double Aileron { set; get; }
+        public double Throttle { set; get; }
+        public double Elevator { set; get; }
+        public double Rudder { set; get; }
+        #endregion
+            #region TrackingProperties
+
         private double lon;
         public double Lon
         {
             set
             {
-                lon = value;
-                NotifyPropertyChanged("Lon");
+                if (Math.Abs(lon - value) > changeTreshold)
+                {
+                    lon = value;
+                    NotifyPropertyChanged("Lon");
+                }
             }
             get
             {
@@ -115,31 +85,19 @@ namespace FlightSimulator.Model
         {
             set
             {
-                lat = value;
-                NotifyPropertyChanged("Lat");
+                if (Math.Abs(lat - value) > changeTreshold)
+                {
+                    lat = value;
+                    NotifyPropertyChanged("Lat");
+                }
+                
             }
             get
             {
                 return lat;
             }
         }
-        String CommandsText
-        {
-            set
-            {
-                string val = value;
-                int index = 0;
-                index = val.IndexOf('\n');
-                while (index != -1)
-                {
-                    string sub = val.Substring(0, index);
-                    val.Remove(0, index + 1);
-                    tc.Write(sub);
-                    index = val.IndexOf('\n');
-                }
-                tc.Write(val);
-            }
-        }
+        #endregion
         #endregion
         #region TCP
         public IFlightSimulatorModel SetTelnetClient(ITelnetClient telnet)
@@ -196,45 +154,33 @@ namespace FlightSimulator.Model
                 NetworkStream stream = client.GetStream();
                 byte[] bytes = new byte[client.ReceiveBufferSize];
                 int byteNum;
-                int EndOfLine = 0;
-                string result = "";
-                string remainder = "";
-                bool IsEndOfLine;
-
+                var remainder = "";
                 while (!stop)
                 {
                     byteNum = stream.Read(bytes, 0, client.ReceiveBufferSize);
-                    String msg = Encoding.ASCII.GetString(bytes, 0, byteNum);
-                    IsEndOfLine = true;
-                    result = remainder;
-                    while (IsEndOfLine)
+                    var msg = Encoding.ASCII.GetString(bytes, 0, byteNum);
+                    String[] data_sets = msg.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                    if (data_sets.Length > 0)
+                        data_sets[0] = remainder + data_sets[0];
+                    while(data_sets.Length > 1)
                     {
-                        EndOfLine = msg.IndexOf('\n');
-                        if (EndOfLine != -1)
-                        {
-                            result += msg.Substring(0, EndOfLine);
-                            msg.Remove(EndOfLine + 1);
-                            ParseLonLat(result);
-                            result = "";
-                            remainder = msg;
-                        }
-                        else
-                        {
-                            remainder += msg;
-                            IsEndOfLine = false;
-                        }
+                        ParseLonLat(data_sets.First());
+                        data_sets = data_sets.Skip(1).ToArray();
                     }
+                    remainder = data_sets.First();
+                }
+                
+                if (connectionClient)
+                {
+                    DisconnectCommandsClient();
+                }
+                if (connectionServer)
+                {
+                    DisconnectInfoServer();
                 }
             }).Start();
             //close connections.
-            if (connectionClient)
-            {
-                DisconnectCommandsClient();
-            }
-            if (connectionServer)
-            {
-                DisconnectInfoServer();
-            }
+            
         }
 
         private void ParseLonLat(string msg)
