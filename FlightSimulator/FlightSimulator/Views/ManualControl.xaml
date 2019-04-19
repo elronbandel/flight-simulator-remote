@@ -38,7 +38,7 @@
                 <RotateTransform Angle="90"/>
             </TextBlock.LayoutTransform>
         </TextBlock>
-        <Slider x:Name = "ThrottleSlider" Value="{Binding Throttle}" Grid.Row="2" Grid.Column="1" Grid.RowSpan="4" Minimum = "-1" Maximum = "1" TickFrequency = "0.1" TickPlacement = "BottomRight"  Margin = "10">
+        <Slider x:Name = "ThrottleSlider" Value="{Binding Throttle}" Grid.Row="2" Grid.Column="1" Grid.RowSpan="4" Minimum = "0" Maximum = "1" TickFrequency = "0.1" TickPlacement = "BottomRight"  Margin = "10">
             <Slider.LayoutTransform>
                 <RotateTransform Angle="-90"/>
             </Slider.LayoutTransform>

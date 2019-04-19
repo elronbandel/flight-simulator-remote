@@ -22,6 +22,7 @@ namespace FlightSimulator.Model
         private TcpListener listener;
         private TcpClient client;
         private Boolean isTelnetSet = false;
+        private int demoNotificationsCounter;
         #region Singleton
         private static IFlightSimulatorModel m_Instance = null;
         public static IFlightSimulatorModel Instance
@@ -45,7 +46,7 @@ namespace FlightSimulator.Model
             connectionClient = false;
             connectionServer = false;
             changeTreshold = 0.001;
-            
+            demoNotificationsCounter = 0;
         }
         public void Execute(string command)
         {
@@ -54,25 +55,35 @@ namespace FlightSimulator.Model
         }
 
         #region Properties
-            #region ControlProperties
-        
+        #region ControlProperties
+
         public double Aileron { set; get; }
         public double Throttle { set; get; }
         public double Elevator { set; get; }
         public double Rudder { set; get; }
         #endregion
-            #region TrackingProperties
+        #region TrackingProperties
 
         private double lon;
         public double Lon
         {
             set
             {
+
                 if (Math.Abs(lon - value) > changeTreshold)
                 {
                     lon = value;
-                    NotifyPropertyChanged("Lon");
+                    if (demoNotificationsCounter > 2)
+                    {
+                        NotifyPropertyChanged("Lon");
+                    }
+                    else
+                    {
+                        demoNotificationsCounter++;
+                    }
+
                 }
+
             }
             get
             {
@@ -86,11 +97,17 @@ namespace FlightSimulator.Model
             set
             {
                 if (Math.Abs(lat - value) > changeTreshold)
-                {
+                {                    
                     lat = value;
-                    NotifyPropertyChanged("Lat");
+                    if (demoNotificationsCounter > 2)
+                    {
+                        NotifyPropertyChanged("Lat");
+                    }
+                    else
+                    {
+                        demoNotificationsCounter++;
+                    }
                 }
-                
             }
             get
             {
@@ -162,14 +179,14 @@ namespace FlightSimulator.Model
                     String[] data_sets = msg.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
                     if (data_sets.Length > 0)
                         data_sets[0] = remainder + data_sets[0];
-                    while(data_sets.Length > 1)
+                    while (data_sets.Length > 1)
                     {
                         ParseLonLat(data_sets.First());
                         data_sets = data_sets.Skip(1).ToArray();
                     }
                     remainder = data_sets.First();
                 }
-                
+
                 if (connectionClient)
                 {
                     DisconnectCommandsClient();
@@ -180,7 +197,7 @@ namespace FlightSimulator.Model
                 }
             }).Start();
             //close connections.
-            
+
         }
 
         private void ParseLonLat(string msg)

@@ -52,7 +52,7 @@ namespace FlightSimulator.Views
                 if (sender is FlightBoardViewModel fbvm)
                 {
                     Point p1 = new Point(fbvm.Lon, fbvm.Lat);
-                    planeLocations.AppendAsync(Dispatcher, p1);
+               planeLocations.AppendAsync(Dispatcher, p1);
                 }
             }
         }

@@ -47,7 +47,11 @@ namespace FlightSimulator.Model
         {
             if (!connected)
                 return;
-            writer.Write(command + "\r\n");
+            command += "\r\n";
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] bytes = encoding.GetBytes(command);
+            writer.Write(bytes,0,bytes.Length);
+            writer.Flush();
         }
     }
 }
