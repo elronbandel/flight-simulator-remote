@@ -53,6 +53,9 @@ namespace FlightSimulator.ViewModels
                 NotifyPropertyChanged("ExecutingFinshed");
             }
         }
+        #endregion
+
+        //main logic of the autopilot view model of managing commands delivery to model
         public void ExecuteCommands()
         {
             //split the commands to seprate commands:
@@ -60,13 +63,14 @@ namespace FlightSimulator.ViewModels
             Executing = true;
             foreach (string command in commands)
             {
+                //execute the commands on after the other
                 model.Execute(command);
                 Thread.Sleep(2000);
             }
             
             Executing = false;
         }
-        #endregion
+        
         #region Commands
         #region ClearCommand
         private ICommand _clearCommand;
