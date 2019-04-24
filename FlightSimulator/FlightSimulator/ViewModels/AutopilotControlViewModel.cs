@@ -19,7 +19,6 @@ namespace FlightSimulator.ViewModels
         public AutopilotControlViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
-           // PropertyChanged += model.NotifyPropertySet;
         }
         #region Properties
         private String commandsText;
@@ -66,42 +65,6 @@ namespace FlightSimulator.ViewModels
             }
             
             Executing = false;
-        }
-
-        public double Throttle
-        {
-            get { return model.Throttle; }
-            set {
-                model.Throttle = value;
-                NotifyPropertyChanged("Throttle");
-            }
-        }
-        public double Rudder
-        {
-            get { return model.Rudder; }
-            set
-            {
-                model.Rudder = value;
-                NotifyPropertyChanged("Rudder");
-            }
-        }
-        public double Aileron
-        {
-            get { return model.Aileron; }
-            set
-            {
-                model.Aileron = value;
-                NotifyPropertyChanged("Aileron");
-            }
-        }
-        public double Elevator
-        {
-            get { return model.Elevator; }
-            set
-            {
-                model.Elevator = value;
-                NotifyPropertyChanged("Elevator");
-            }
         }
         #endregion
         #region Commands

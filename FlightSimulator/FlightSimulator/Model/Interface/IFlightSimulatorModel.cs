@@ -7,6 +7,7 @@ using System.ComponentModel;
 
 namespace FlightSimulator.Model.Interface
 {
+    //A FlightSimulatorModel interface.
     public interface IFlightSimulatorModel : INotifyPropertyChanged
     {
         double Aileron { get; set; }
@@ -18,6 +19,7 @@ namespace FlightSimulator.Model.Interface
         void ConnectInfoServer(string FlightServerIP, int FlightInfoPort);
         void DisconnectInfoServer();
         void StartInfoServer();
+        void StopInfoServer();
         void ConnectCommandsClient(string FlightServerIP, int FlightCommandPort);
         void DisconnectCommandsClient();
         IFlightSimulatorModel SetTelnetClient(ITelnetClient telnetClient);
